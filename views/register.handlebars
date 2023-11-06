@@ -1,0 +1,25 @@
+<!-- views/register.handlebars -->
+<form action="/auth/register" method="POST">
+{{#if error}}
+<div class="alert alert-danger" role="alert">
+  {{error}}
+</div>
+{{/if}}
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+  </div>
+  <div>
+    <button type="submit">Register</button>
+    <a href="/"><button type="button">Back to Home</button></a>
+  </div>
+</form>
+

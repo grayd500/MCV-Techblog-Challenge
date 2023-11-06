@@ -1,7 +1,9 @@
 // server.js:
+const authRoutes = require('./routes/authRoutes');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const sequelize = require('./config/database');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -25,6 +27,11 @@ app.use(session({
   // ... other session options
 }));
 
+app.use(function(err, req, res, next) {
+  console.error(err.stack); // Log error stack for debugging
+  res.status(500).send('Something broke!'); // Send a 500 error to the client
+});
+
 // Middleware to check if the user is logged in
 function checkAuth(req, res, next) {
   if (req.session.loggedIn) {
@@ -37,6 +44,7 @@ function checkAuth(req, res, next) {
 
 // Use the checkAuth middleware
 app.use(checkAuth);
+app.use('/auth', authRoutes);
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
@@ -50,10 +58,31 @@ app.get('/', async (req, res) => {
   res.render('home', { blogPosts });
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.get('/dashboard', checkAuth, async (req, res) => {
+  if (!res.locals.loggedIn) {
+    return res.redirect('/auth/login');
+  }
+
+  // Fetch user-specific data from the database
+  const userContent = []; // Replace with actual code to fetch data
+  res.render('dashboard', { userContent });
 });
+
+// Sync Sequelize models to the database and then start the server
+async function startServer() {
+  try {
+    await sequelize.sync();
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error('Unable to connect to the database:', err);
+  }
+}
+
+startServer(); // Call the function to start the server
+
+
 
 // This code does the following:
 // Imports the express module.
