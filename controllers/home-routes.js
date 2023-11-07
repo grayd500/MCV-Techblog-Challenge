@@ -11,12 +11,12 @@ router.get('/', (req, res) => {
 // Add the login view route
 router.get('/login', (req, res) => {
     res.render('login'); // Assumes there is a login.handlebars file in your views directory
-});
+  });
 
 // Add the register view route
 router.get('/register', (req, res) => {
     res.render('register'); // Assumes there is a register.handlebars file in your views directory
-});
+  });
 
 // Register route with validation middleware
 router.post('/register', 

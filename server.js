@@ -23,6 +23,12 @@ const sess = {
 
 app.use(session(sess));
 
+app.use((req, res, next) => {
+  res.locals.loggedIn = req.session.logged_in || false;
+  console.log('Session ID:', req.session.id, 'Session Data:', req.session);
+  next();
+});
+
 const hbs = exphbs.create({
   /* config */
 });

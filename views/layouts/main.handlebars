@@ -1,13 +1,28 @@
+{{!-- views/layouts/main.handlebars: --}}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Blog</title>
-    <!-- Add any head elements like CSS links here -->
+  <!-- Head content like linking CSS files -->
+  <title>The Tech Blog</title>
 </head>
 <body>
-    <!-- This is where the content of your other Handlebars templates will go -->
-    {{{body}}}
-
-    <!-- You can include global scripts or footer elements here -->
+  <header>
+    <!-- Navigation links -->
+    <nav>
+      <a href="/">Home</a>
+      {{#if loggedIn}}
+        <a href="/dashboard">Dashboard</a>
+        <button id="logoutButton">Logout</button>
+      {{else}}
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      {{/if}}
+    </nav>
+  </header>
+  {{{body}}}
+  <footer>
+    <!-- Footer content -->
+  </footer>
+  <script src="/js/logout.js"></script>
 </body>
 </html>

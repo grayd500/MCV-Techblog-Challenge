@@ -26,6 +26,8 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
+            console.log('Session ID:', req.session.id, 'Session Data:', req.session);
+
             
             res.json({ user: userData, message: 'You are now logged in!' });
         });
@@ -37,14 +39,22 @@ router.post('/login', async (req, res) => {
 
 // Logout route
 router.post('/logout', (req, res) => {
+    console.log('Cookies sent with request:', req.cookies); // This will log the cookies
+
+    // Store session ID before destruction to log it afterwards
+    const sessionId = req.session.id;
+
     if (req.session.logged_in) {
         req.session.destroy(() => {
+            console.log('Logging out session ID:', sessionId); // Log the session ID
+
             res.status(204).end();
         });
     } else {
         res.status(404).end();
     }
 });
+
 
 // Registration route
 router.post('/register', async (req, res) => {
