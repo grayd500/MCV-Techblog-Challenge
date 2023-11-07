@@ -1,5 +1,5 @@
 <!-- views/login.handlebars: -->
-<form action="/auth/login" method="POST">
+<form action="/api/users/login" method="POST">
 {{#if error}}
 <div class="alert alert-danger" role="alert">
   {{error}}
@@ -19,3 +19,4 @@
     <a href="/"><button type="button">Back to Home</button></a>
   </div>
 </form>
+<script src="/js/login.js"></script>

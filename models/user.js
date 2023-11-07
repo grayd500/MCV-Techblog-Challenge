@@ -1,8 +1,8 @@
 // models/user.js:
-const Sequelize = require('sequelize');
-const sequelize = require('../config/database');
+const Sequelize = require("sequelize");
+const sequelize = require("../config/config");
 
-const User = sequelize.define('user', {
+const User = sequelize.define("user", {
   // Define attributes
   username: {
     type: Sequelize.STRING,

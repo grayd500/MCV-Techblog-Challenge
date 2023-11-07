@@ -1,5 +1,5 @@
 // initDb.js
-const sequelize = require("./config/database");
+const sequelize = require("./config/config");
 const User = require("./models/user");
 
 sequelize

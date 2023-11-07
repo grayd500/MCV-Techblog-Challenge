@@ -1,7 +1,8 @@
+// controllers/dashboard-routes.js:
 const router = require('express').Router();
+const withAuth = require('../utils/auth');
 
-// Dummy route
-router.get('/', (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   res.send('Dashboard Page');
 });
 
