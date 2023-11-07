@@ -3,6 +3,7 @@
 <html>
 <head>
   <!-- Head content like linking CSS files -->
+  <link rel="stylesheet" href="/css/style.css">
   <title>The Tech Blog</title>
 </head>
 <body>
@@ -12,7 +13,9 @@
       <a href="/">Home</a>
       {{#if loggedIn}}
         <a href="/dashboard">Dashboard</a>
-        <button id="logoutButton">Logout</button>
+        <form id="logoutForm" action="/logout" method="POST">
+          <button type="submit">Logout</button>
+        </form>
       {{else}}
         <a href="/login">Login</a>
         <a href="/register">Register</a>
@@ -23,6 +26,8 @@
   <footer>
     <!-- Footer content -->
   </footer>
+  <!-- Scripts -->
   <script src="/js/logout.js"></script>
 </body>
 </html>
+

@@ -1,37 +1,12 @@
 {{!-- views/all-posts.handlebars: --}}
-<!DOCTYPE html>
-<html>
-<head>
-  <!-- Head content like linking CSS files -->
-  <title>The Tech Blog</title>
-</head>
-<body>
-  <header>
-    <!-- Navigation links -->
-    <nav>
-      <a href="/">Home</a>
-      {{#if loggedIn}}
-        <a href="/dashboard">Dashboard</a>
-        <a href="/logout">Logout</a>
-      {{else}}
-        <a href="/login"><button>Login</button></a>
-        <a href="/register"><button>Register</button></a>
-        <button id="logoutButton">Logout</button>
-      {{/if}}
-    </nav>
-  </header>
-  <main>
-    <h1>The Tech Blog</h1>
-    <!-- Display blog posts -->
-    {{#each blogPosts}}
-      <div class="post">
-        <h2>{{this.title}}</h2>
-        <p>{{this.content}}</p>
-      </div>
-    {{/each}}
-  </main>
-  <footer>
-    <!-- Footer content -->
-  </footer>
-</body>
-</html>
+<main>
+  <h1>The Tech Blog</h1>
+  <!-- Display blog posts -->
+  {{#each blogPosts}}
+    <article class="post">
+      <h2>{{this.title}}</h2>
+      <p>{{this.content}}</p>
+    </article>
+  {{/each}}
+</main>
+
