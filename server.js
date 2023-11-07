@@ -11,13 +11,19 @@ const dashboardRoutes = require('./controllers/dashboard-routes');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const TEN_MINUTES = 1000 * 60 * 10;
+
 const sess = {
   secret: "Super secret secret",
-  cookie: {},
+  cookie: {
+    maxAge: TEN_MINUTES // this will set the cookie to expire after idle time of 10 minutes
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize,
+    checkExpirationInterval: 15 * 60 * 1000, // The interval at which to cleanup expired sessions in milliseconds.
+    expiration: 24 * 60 * 60 * 1000  // The maximum age (in milliseconds) of a valid session. 
   }),
 };
 
