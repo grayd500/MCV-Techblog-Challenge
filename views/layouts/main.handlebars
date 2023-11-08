@@ -10,19 +10,17 @@
   <header>
     <!-- Navigation links -->
     <nav>
-      <a href="/">Home</a>
-      {{#if loggedIn}}
-        {{#unless onDashboard}}
-          <a href="/dashboard">Dashboard</a>
-        {{/unless}}
-        <form id="logoutForm" action="/logout" method="POST">
-          <button type="submit">Logout</button>
-        </form>
-      {{else}}
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-      {{/if}}
-    </nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- Add the following lines for the login, dashboard, and logout links -->
+    <li><a href="/login">Login</a></li>
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/logout">Logout</a></li>
+    <!-- Other navigation links here -->
+  </ul>
+</nav>
+
+
   </header>
   {{{body}}}
   <footer>

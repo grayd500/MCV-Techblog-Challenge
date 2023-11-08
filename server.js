@@ -27,6 +27,17 @@ const sess = {
   }),
 };
 
+// route for logout
+app.get('/logout', (req, res) => {
+  if (req.session) {
+    req.session.destroy(() => {
+      res.redirect('/login'); // Redirect to login after logout
+    });
+  } else {
+    res.redirect('/login'); // Redirect to login even if there was no active session
+  }
+});
+
 app.use(session(sess));
 
 app.use((req, res, next) => {
