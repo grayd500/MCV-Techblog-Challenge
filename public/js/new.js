@@ -6,6 +6,7 @@ document.querySelector('#new-post-form').addEventListener('submit', async (event
     const content = document.querySelector('#post-content').value.trim();
   
     if (title && content) {
+        console.log("Sending Post Data: ", JSON.stringify({ title, content }));
       const response = await fetch('/api/posts', {
         method: 'POST',
         body: JSON.stringify({ title, content }),

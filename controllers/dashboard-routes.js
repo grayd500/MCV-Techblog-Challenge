@@ -12,8 +12,9 @@ router.get('/', withAuth, async (req, res) => {
       }
     });
     const posts = postData.map((post) => post.get({ plain: true }));
-    res.render('dashboard', { 
-      layout: 'main', // Specify the layout you are using
+    console.log('Dashboard posts:', posts); // This will output the posts data to your console
+    res.render('dashboard', {
+      layout: 'main',
       posts,
       onDashboard: true,
       logged_in: req.session.logged_in
@@ -23,7 +24,6 @@ router.get('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 module.exports = router;
 

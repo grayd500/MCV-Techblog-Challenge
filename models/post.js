@@ -20,12 +20,26 @@ Post.init({
     type: DataTypes.TEXT,
     allowNull: false
   },
-  // Add other attributes as needed
+  created_at: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW
+  },
+  updated_at: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW
+  },
 }, {
   sequelize,
   freezeTableName: true,
   underscored: true,
-  modelName: 'post'
+  modelName: 'post',
+  // Set timestamps to true to let Sequelize handle createdAt and updatedAt
+  timestamps: true,
+  createdAt: 'created_at',
+  updatedAt: 'updated_at'
 });
 
 module.exports = Post;
+

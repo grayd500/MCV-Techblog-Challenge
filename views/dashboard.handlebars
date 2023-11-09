@@ -12,21 +12,17 @@
     <!-- Posts list -->
     <div id="posts-list">
       {{#each posts}}
-        <div class="post">
-          <h2 class="title">{{this.title}}</h2>
-          <p class="content">{{this.content}}</p>
-          <!-- Add other post details you want to display -->
-        </div>
-      {{/each}}
+  <div class="post">
+    <h2 class="title">{{this.title}}</h2>
+    <p class="content">{{this.content}}</p>
+    <!-- Display the created_at date for each post -->
+    <p class="date">Posted on: {{format_date this.created_at}}</p>
+  </div>
+{{/each}}
+
     </div>
   </section>
 </main>
 
 <!-- Reference the JavaScript file for handling new post creation -->
 <script src="/js/new.js"></script>
-
-
-
-
-
-

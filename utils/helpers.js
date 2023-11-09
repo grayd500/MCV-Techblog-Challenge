@@ -1,8 +1,9 @@
-// utils/helpers.js:
 module.exports = {
-    formatDate: (date) => {
+    format_date: (date) => { // Rename this to format_date if it's formatDate
       return date.toLocaleDateString();
     },
-    // Add other helpers as needed
-  };
+    // ...other helpers
+};
+
+
    

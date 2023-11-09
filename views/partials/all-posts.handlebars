@@ -1,9 +1,9 @@
-{{!-- This is now views/partials/all-posts.handlebars --}}
+{{!-- views/partials/all-posts.handlebars: --}}
 {{#each posts}}
 <article class="post">
   <h2>{{this.title}}</h2>
   <p>{{this.content}}</p>
-  <!-- Add other post details you want to display -->
+  <p>Posted on: {{format_date this.created_at}}</p> <!-- Use the correct helper format_date -->
 </article>
 {{/each}}
 
