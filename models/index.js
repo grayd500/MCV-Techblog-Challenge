@@ -1,6 +1,17 @@
 // models/index.js
-const User = require("./user"); // assuming your user model file is named user.js
+const User = require('./user');
+const Post = require('./post');
 
-module.exports = {
-  User,
-};
+// Create associations
+User.hasMany(Post, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+
+Post.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
+module.exports = { User, Post };
+
+

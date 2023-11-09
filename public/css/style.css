@@ -1,0 +1,75 @@
+/* Apply a basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .post {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .post h2 {
+    margin-bottom: 10px;
+  }
+  
+  footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  /* This ID is for the logout link */
+  #logoutLink {
+    float: right;
+    margin-right: 20px;
+  }
+  
+  /* This is a clear fix for the floated logout link */
+  header:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  

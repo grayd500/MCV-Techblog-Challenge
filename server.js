@@ -7,6 +7,7 @@ const path = require("path");
 const sequelize = require("./config/config");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const dashboardRoutes = require('./controllers/dashboard-routes');
+const homeRoutes = require('./controllers/home-routes');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -47,7 +48,11 @@ app.use((req, res, next) => {
 });
 
 const hbs = exphbs.create({
+  helpers: require('./utils/helpers'), // include your helpers here
 });
+
+app.use('/', homeRoutes);
+app.use('/dashboard', dashboardRoutes);
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");

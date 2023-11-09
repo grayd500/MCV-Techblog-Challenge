@@ -1,8 +1,32 @@
-<!-- views/dashboard.handlebars: -->
-
+<!-- views/dashboard.handlebars -->
 <main>
   <h1>Dashboard</h1>
-  <!-- Your future blog post elements will go here -->
+  <section id="posts-section">
+    <!-- New post form -->
+    <form id="new-post-form" class="new-post-form">
+      <input id="post-title" type="text" placeholder="Title" name="title" required>
+      <textarea id="post-content" placeholder="Content" name="content" required></textarea>
+      <button type="submit">Create Post</button>
+    </form>
+
+    <!-- Posts list -->
+    <div id="posts-list">
+      {{#each posts}}
+        <div class="post">
+          <h2 class="title">{{this.title}}</h2>
+          <p class="content">{{this.content}}</p>
+          <!-- Add other post details you want to display -->
+        </div>
+      {{/each}}
+    </div>
+  </section>
 </main>
+
+<!-- Reference the JavaScript file for handling new post creation -->
+<script src="/js/new.js"></script>
+
+
+
+
 
 

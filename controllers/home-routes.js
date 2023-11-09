@@ -2,10 +2,18 @@
 const router = require('express').Router();
 const { User } = require('../models'); // Ensure this path is correct
 const { check, validationResult } = require('express-validator');
+const { Post } = require('../models');
 
 // Existing dummy route for home
-router.get('/', (req, res) => {
-  res.render('all-posts'); // Make sure 'all-posts' corresponds with your Handlebars template for the homepage
+router.get('/', async (req, res) => {
+  try {
+    const postData = await Post.findAll();
+    const posts = postData.map((post) => post.get({ plain: true }));
+    res.render('home', { posts }); // Note that we're passing posts to the home template
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
 });
 
 // Add the login view route
