@@ -4,18 +4,19 @@ const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
-    try {
-      const newPostData = {
-        title: req.body.title,
-        content: req.body.content,
-        user_id: req.session.user_id
-      };
+  try {
+    const newPostData = {
+      title: req.body.title,
+      content: req.body.content,
+      userId: req.session.userId // Changed from user_id to userId
+  };
+      console.log("Creating new post with data:", newPostData); // Corrected line
       const newPost = await Post.create(newPostData);
       res.status(200).json(newPost);
-    } catch (err) {
+  } catch (err) {
       console.error('Error creating post:', err);
       res.status(500).json(err);
-    }
-  });
+  }
+});
 
 module.exports = router;

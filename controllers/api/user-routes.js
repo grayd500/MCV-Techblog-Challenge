@@ -24,11 +24,10 @@ router.post('/login', async (req, res) => {
 
         // Once the user successfully logs in, set up the sessions variable 'loggedIn'
         req.session.save(() => {
-            req.session.user_id = userData.id;
+            req.session.userId = userData.id;
             req.session.logged_in = true;
             console.log('Session ID:', req.session.id, 'Session Data:', req.session);
 
-            
             res.json({ user: userData, message: 'You are now logged in!' });
         });
 
@@ -66,12 +65,11 @@ router.post('/register', async (req, res) => {
         });
 
         req.session.save(() => {
-            req.session.user_id = userData.id;
+            req.session.userId = userData.id; // Corrected to match the login route
             req.session.logged_in = true;
             res.status(200).json({ user: userData, message: 'Registration successful!' });
         });
     } catch (err) {
-        // This will catch if the email or username is already taken, as well as other errors
         res.status(400).json({ message: 'Unable to register', error: err });
     }
 });

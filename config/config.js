@@ -1,4 +1,4 @@
-// techblog2/config/config.js
+// config/config.js
 require('dotenv').config();
 
 const Sequelize = require('sequelize');

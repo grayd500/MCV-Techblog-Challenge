@@ -1,0 +1,12 @@
+{{!-- views/single-post.handlebars: --}}
+<h1>{{post.title}}</h1>
+<p>{{post.content}}</p>
+
+{{#if loggedIn}}
+  <form id="comment-form">
+    <textarea name="comment" placeholder="Add a comment..."></textarea>
+    <button type="submit">Submit Comment</button>
+  </form>
+{{/if}}
+<script src="/js/comment.js"></script>
+

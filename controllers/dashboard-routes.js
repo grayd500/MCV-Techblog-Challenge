@@ -8,7 +8,7 @@ router.get('/', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: {
-        user_id: req.session.user_id
+        userId: req.session.userId // Change from user_id to userId to match the login route
       }
     });
     const posts = postData.map((post) => post.get({ plain: true }));
@@ -24,6 +24,9 @@ router.get('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+module.exports = router;
+
 
 module.exports = router;
 

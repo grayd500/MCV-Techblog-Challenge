@@ -1,16 +1,19 @@
-// models/user.js:
-const Sequelize = require("sequelize");
-const sequelize = require("../config/config");
+// Filename: models/user.js
 
-const User = sequelize.define("user", {
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/config');
+
+class User extends Model {}
+
+User.init({
   // Define attributes
   username: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false,
     unique: true,
   },
   email: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false,
     unique: true,
     validate: {
@@ -18,9 +21,12 @@ const User = sequelize.define("user", {
     },
   },
   password: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false,
   },
+}, {
+  sequelize,
+  modelName: 'user',
 });
 
 module.exports = User;

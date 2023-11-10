@@ -1,4 +1,5 @@
 // models/post.js
+
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/config');
 
@@ -30,16 +31,23 @@ Post.init({
     allowNull: false,
     defaultValue: DataTypes.NOW
   },
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'user', // Make sure this is the table name of the User model in your database
+      key: 'id',
+    },
+    field: 'user_id' // This specifies the actual column name in the database
+  },
 }, {
   sequelize,
   freezeTableName: true,
   underscored: true,
   modelName: 'post',
-  // Set timestamps to true to let Sequelize handle createdAt and updatedAt
   timestamps: true,
   createdAt: 'created_at',
   updatedAt: 'updated_at'
 });
 
 module.exports = Post;
-

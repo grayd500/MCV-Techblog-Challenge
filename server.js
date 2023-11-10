@@ -40,7 +40,6 @@ app.get('/logout', (req, res) => {
 });
 
 app.use(session(sess));
-
 app.use((req, res, next) => {
   res.locals.loggedIn = req.session.logged_in || false;
   console.log('Session ID:', req.session.id, 'Session Data:', req.session);
@@ -53,19 +52,13 @@ const hbs = exphbs.create({
 
 app.use('/', homeRoutes);
 app.use('/dashboard', dashboardRoutes);
-
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
-
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.json());
-
 app.use('/dashboard', dashboardRoutes);
 app.use(routes);
-
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
 });
