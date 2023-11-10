@@ -1,6 +1,7 @@
 {{!-- views/single-post.handlebars: --}}
 <h1>{{post.title}}</h1>
 <p>{{post.content}}</p>
+<p>Posted by {{post.user.username}} on {{format_date post.createdAt}}</p> <!-- Add this line for the initial post -->
 
 <!-- Comments Section -->
 <div class="comments">
@@ -9,19 +10,18 @@
     {{#each post.comments as |comment|}}
       <div class="comment">
         <p>{{comment.text}}</p>
-        <!-- You can add more details like date, username etc. -->
+        <p>Comment by {{comment.user.username}} on {{format_date comment.createdAt}}</p> <!-- Update this line for comments -->
       </div>
     {{/each}}
   {{else}}
     <p>No comments yet.</p>
   {{/if}}
 </div>
-<!-- Comment Form -->
+
+<!-- Comment Submission Form -->
 {{#if loggedIn}}
   <form id="comment-form" onsubmit="return false;">
     <textarea name="comment" placeholder="Add a comment..."></textarea>
     <button type="submit">Submit Comment</button>
   </form>
 {{/if}}
-
-

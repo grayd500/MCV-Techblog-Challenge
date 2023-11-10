@@ -49,5 +49,15 @@ Post.init({
   createdAt: 'created_at',
   updatedAt: 'updated_at'
 });
+Post.associate = (models) => {
+  Post.belongsTo(models.User, {
+    foreignKey: 'userId',
+    as: 'user'
+  });
+  Post.hasMany(models.Comment, {
+    foreignKey: 'postId',
+    as: 'comments'
+  });
+};
 
 module.exports = Post;

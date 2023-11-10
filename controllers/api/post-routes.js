@@ -1,6 +1,6 @@
 // controllers/api/post-routes.js:
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
@@ -16,6 +16,29 @@ router.post('/', withAuth, async (req, res) => {
   } catch (err) {
       console.error('Error creating post:', err);
       res.status(500).json(err);
+  }
+});
+router.get('/', async (req, res) => {
+  try {
+    const posts = await Post.findAll({
+      include: [{
+        model: User,
+        as: 'user',
+        attributes: ['username']
+      }, {
+        model: Comment,
+        as: 'comments',
+        include: {
+          model: User,
+          as: 'user',
+          attributes: ['username']
+        }
+      }]
+    });
+    res.status(200).json(posts);
+  } catch (err) {
+    console.error('Error fetching posts:', err);
+    res.status(500).json(err);
   }
 });
 

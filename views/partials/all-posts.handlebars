@@ -3,7 +3,7 @@
 <article class="post">
   <h2><a href="/post/{{this.id}}">{{this.title}}</a></h2>
   <p>{{this.content}}</p>
-  <p>Posted by {{this.username}} on {{format_date this.createdAt}}</p> <!-- Make sure the format_date helper is defined -->
+  <p>Posted by {{this.user.username}} on {{format_date this.createdAt}}</p>
 </article>
 {{/each}}
 

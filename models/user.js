@@ -29,4 +29,15 @@ User.init({
   modelName: 'user',
 });
 
+User.associate = (models) => {
+  User.hasMany(models.Post, {
+    foreignKey: 'userId',
+    as: 'posts' // This 'as' is important for eager loading
+  });
+  User.hasMany(models.Comment, {
+    foreignKey: 'userId',
+    as: 'comments'
+  });
+};
+
 module.exports = User;

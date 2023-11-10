@@ -10,7 +10,7 @@ Comment.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
-  // Foreign keys for the User and Post this comment belongs to
+  
   userId: {
     type: DataTypes.INTEGER,
     allowNull: false
@@ -23,5 +23,11 @@ Comment.init({
   sequelize,
   modelName: 'comment',
 });
+Comment.associate = (models) => {
+  Comment.belongsTo(models.User, {
+    foreignKey: 'userId',
+    as: 'user'
+  });
+};
 
 module.exports = Comment;
