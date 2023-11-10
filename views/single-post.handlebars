@@ -2,11 +2,26 @@
 <h1>{{post.title}}</h1>
 <p>{{post.content}}</p>
 
+<!-- Comments Section -->
+<div class="comments">
+  <h3>Comments:</h3>
+  {{#if post.comments}}
+    {{#each post.comments as |comment|}}
+      <div class="comment">
+        <p>{{comment.text}}</p>
+        <!-- You can add more details like date, username etc. -->
+      </div>
+    {{/each}}
+  {{else}}
+    <p>No comments yet.</p>
+  {{/if}}
+</div>
+<!-- Comment Form -->
 {{#if loggedIn}}
-  <form id="comment-form">
+  <form id="comment-form" onsubmit="return false;">
     <textarea name="comment" placeholder="Add a comment..."></textarea>
     <button type="submit">Submit Comment</button>
   </form>
 {{/if}}
-<script src="/js/comment.js"></script>
+
 

@@ -35,26 +35,44 @@ router.get('/', async (req, res) => {
   }
 });
 
-
 router.get('/post/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
-      include: [{ model: Comment, include: [User] }]
-    });
-    if (postData) {
-      const post = postData.get({ plain: true });
-      res.render('single-post', {
-        post,
-        loggedIn: req.session.loggedIn
-      });
-    } else {
-      res.status(404).json({ message: 'No post found with this id!' });
-    }
+      include: [
+          {
+              model: Comment,
+              attributes: ['text', 'createdAt', 'userId'],
+              include: [{
+                  model: User,
+                  attributes: ['username']
+              }]
+          },
+          {
+              model: User,
+              attributes: ['username']
+          }
+      ]
+  });
+  
+
+      if (postData) {
+          const post = postData.get({ plain: true });
+
+          console.log("User Logged In:", req.session.logged_in); // Make sure this matches your session variable
+          res.render('single-post', {
+              post,
+              loggedIn: req.session.logged_in // Update this to match your session variable
+          });
+      } else {
+          res.status(404).json({ message: 'No post found with this id!' });
+      }
   } catch (err) {
-    console.error(err);
-    res.status(500).json(err);
+      console.error(err);
+      res.status(500).json(err);
   }
 });
+
+
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {

@@ -4,6 +4,7 @@ const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
+  console.log('Comment POST request received:', req.body);
   try {
     const newComment = await Comment.create({
       text: req.body.text,     // This should match the key from the client-side

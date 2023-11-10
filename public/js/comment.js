@@ -1,22 +1,19 @@
 // public/js/comment.js:
+console.log('comment.js loaded');
 document.addEventListener('DOMContentLoaded', function() {
   const commentForm = document.getElementById('comment-form');
 
-  if (commentForm) { // Added a check to make sure the comment form exists
+  if (commentForm) {
     commentForm.addEventListener('submit', async function(e) {
       e.preventDefault();
+      console.log('Submitting comment at:', new Date().toISOString()); // Add this line for debugging
       const commentText = commentForm.querySelector('textarea[name="comment"]').value;
-      const postId = window.location.pathname.split('/').pop(); // Correct as per your URL assumption
+      const postId = window.location.pathname.split('/').pop();
 
       const response = await fetch('/api/comments', {
         method: 'POST',
-        body: JSON.stringify({ 
-          postId,  // This is correct
-          text: commentText  // Change 'commentText' to 'text' to match the Comment model
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        body: JSON.stringify({ postId, text: commentText }),
+        headers: { 'Content-Type': 'application/json' }
       });
 
       if (response.ok) {
@@ -27,3 +24,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
