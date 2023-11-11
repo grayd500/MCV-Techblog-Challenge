@@ -35,7 +35,7 @@ Post.init({
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: 'user', // Make sure this is the table name of the User model in your database
+      model: 'users', 
       key: 'id',
     },
     field: 'user_id' // This specifies the actual column name in the database
