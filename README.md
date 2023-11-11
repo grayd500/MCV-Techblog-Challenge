@@ -30,16 +30,17 @@ This Tech Blog is a CMS-style platform, inspired by the ubiquitous role of writi
 ## Preview
 ![Tech Blog](public/img/techBlogImage.png)
 
+## Links
+GitHub Repository: https://github.com/grayd500/techblog-challenge2
+Heroku Deployment: https://dashboard.heroku.com/apps/hidden-spire-39369
+
 ## Credits
 🤝 Credits:
 - ChatGPT for README.md assistance, code snippets, commenting, Heroku deployment, and creating dummy data.
 - Katie Redford (EdX TA) and Coding Bootcamp TAs for setup guidance and troubleshooting.
 
 ## License
-
 This project is licensed under the MIT License.
-
----
 
 ## Features
 🌟 Features include:
