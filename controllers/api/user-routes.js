@@ -1,7 +1,8 @@
 // controllers/api/user-routes.js:
 const router = require('express').Router();
 const { User } = require('../../models');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
+
 
 // Login route
 router.post('/login', async (req, res) => {
@@ -15,7 +16,7 @@ router.post('/login', async (req, res) => {
         }
 
         // Verify the posted password with the password stored in the database
-        const validPassword = await bcrypt.compare(req.body.password, userData.password);
+        const validPassword = await bcryptjs.compare(req.body.password, userData.password);
 
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect email or password, please try again' });
@@ -60,7 +61,7 @@ router.post('/register', async (req, res) => {
         const userData = await User.create({
             username: req.body.username,
             email: req.body.email,
-            password: await bcrypt.hash(req.body.password, 10) // Hash password
+            password: await bcryptjs.hash(req.body.password, 10) // Hash password
         });
 
         req.session.save(() => {

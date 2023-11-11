@@ -1,7 +1,7 @@
 // controllers/home-routes.js:
 const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
-const bcrypt = require('bcryptjs');
+const bcryptjs = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const withAuth = require('../utils/auth');
 
@@ -77,7 +77,7 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ where: { email } });
-    if (user && await bcrypt.compare(password, user.password)) {
+    if (user && await bcryptjs.compare(password, user.password)) {
       req.session.loggedIn = true;
       req.session.userId = user.id;
       res.redirect('/dashboard');
@@ -107,7 +107,7 @@ router.post('/register', [
 
   const { username, email, password } = req.body;
   try {
-    const hashedPassword = await bcrypt.hash(password, 8);
+    const hashedPassword = await bcryptjs.hash(password, 8);
     await User.create({ username, email, password: hashedPassword });
     res.redirect('/login');
   } catch (error) {
