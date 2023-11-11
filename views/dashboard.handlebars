@@ -1,4 +1,4 @@
-<!-- views/dashboard.handlebars -->
+<!-- views/dashboard.handlebars: -->
 <main>
   <h1>Dashboard</h1>
   <section id="posts-section">
@@ -17,6 +17,8 @@
     <p class="content">{{this.content}}</p>
     <!-- Display the created_at date for each post -->
     <p class="date">Posted on: {{format_date this.created_at}}</p>
+    <button class="edit-post-btn" data-id="{{this.id}}">Edit</button>
+    <button class="delete-post-btn" data-id="{{this.id}}">Delete</button>
   </div>
 {{/each}}
 
@@ -26,3 +28,4 @@
 
 <!-- Reference the JavaScript file for handling new post creation -->
 <script src="/js/new.js"></script>
+<script src="/js/edit.js"></script>

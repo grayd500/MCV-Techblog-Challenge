@@ -1,7 +1,7 @@
 # Model-View-Controller (MVC) Challenge: Tech Blog
 * Writing about tech can be just as important as making it. Developers spend plenty of time creating new applications and debugging existing codebases, but most developers also spend at least some of their time reading and writing about technical concepts, recent advancements, and new technologies. A simple Google search for any concept covered in this course returns thousands of think pieces and tutorials from developers of all skill levels!
 
-* Your challenge this week is to build a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. You’ll build this site completely from scratch and deploy it to Heroku. Your app will follow the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
+* build a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. You’ll build this site completely from scratch and deploy it to Heroku. Your app will follow the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
 
 ## User Story
 AS A developer who writes about tech
@@ -42,22 +42,23 @@ WHEN I click on the dashboard option in the navigation
 ✔️THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
 
 WHEN I click on an existing blog post
-🚧THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment
+✔️THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment
 
 WHEN I enter a comment and click on the submit button while signed in
-🚧THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
+✔️THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
 
 WHEN I click on the button to add a new blog post
-🚧THEN I am prompted to enter both a title and contents for my blog post
+✔️THEN I am prompted to enter both a title and contents for my blog post
 
 WHEN I click on the button to create a new blog post
-🚧THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
-
-WHEN I click on one of my existing posts in the dashboard
-🚧THEN I am able to delete or update my post and taken back to an updated dashboard
+✔️THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
 
 WHEN I am idle on the site for more than a set time
-🚧THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
+✔️THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
+
+WHEN I click on one of my existing posts in the dashboard
+✔️THEN I am able to delete or update my post and taken back to an updated dashboard
+
 
 ## The following animation demonstrates the application functionality:
 
