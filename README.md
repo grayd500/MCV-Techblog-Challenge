@@ -31,8 +31,9 @@ This Tech Blog is a CMS-style platform, inspired by the ubiquitous role of writi
 ![Tech Blog](public/img/techBlogImage.png)
 
 ## Links
-GitHub Repository: https://github.com/grayd500/techblog-challenge2
-Heroku Deployment: https://dashboard.heroku.com/apps/hidden-spire-39369
+🐱 GitHub Repository: https://github.com/grayd500/techblog-challenge2
+
+⚛️ Heroku Deployment: https://hidden-spire-39369-ddfbfb383def.herokuapp.com/
 
 ## Credits
 🤝 Credits:
