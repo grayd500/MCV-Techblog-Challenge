@@ -1,25 +1,39 @@
 <!-- views/login.handlebars: -->
+<!-- Login form view -->
 <form action="/api/users/login" method="POST">
-{{#if error}}
-<div class="alert alert-danger" role="alert">
-  {{error}}
-</div>
-{{/if}}
+  <!-- Handlebars conditional to check for an error message -->
+  {{#if error}}
+  <div class="alert alert-danger" role="alert">
+    <!-- Displaying the error message -->
+    {{error}}
+  </div>
+  {{/if}}
 
+  <!-- Input field for email -->
   <div>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
   </div>
+
+  <!-- Input field for password -->
   <div>
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required>
   </div>
+
+  <!-- Submit button to log in -->
   <div>
     <button type="submit">Log In</button>
+    <!-- Link to go back to the home page -->
     <a href="/"><button type="button">Back to Home</button></a>
   </div>
+
+  <!-- Link to switch to register page if the user doesn't have an account -->
   <div>
     <p>Don't have an account? <a href="/register">Sign up instead</a></p>
-</div>
+  </div>
 </form>
+
+<!-- Linking the JavaScript file for handling the login process -->
 <script src="/js/login.js"></script>
+
