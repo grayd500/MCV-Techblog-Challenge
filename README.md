@@ -39,6 +39,9 @@ This Tech Blog is a CMS-style platform, inspired by the ubiquitous role of writi
 🤝 Credits:
 - ChatGPT for README.md assistance, code snippets, commenting, Heroku deployment, and creating dummy data.
 - Katie Redford (EdX TA) and Coding Bootcamp TAs for setup guidance and troubleshooting.
+- The CSS background pattern used in this project is courtesy of Hero Patterns. These visually engaging patterns were created by Steve Schoge at [Hero Patterns](https://heropatterns.com/).
+
+We extend our sincere thanks to Steve Schoge for developing such a versatile and user-friendly resource.
 
 ## License
 This project is licensed under the MIT License.
