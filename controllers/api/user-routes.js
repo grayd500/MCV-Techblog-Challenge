@@ -58,10 +58,13 @@ router.post('/logout', (req, res) => {
 // Registration route
 router.post('/register', async (req, res) => {
     try {
+        // Log the incoming request body
+        console.log('Received data for registration:', req.body);
+
         const userData = await User.create({
             username: req.body.username,
             email: req.body.email,
-            password: await bcryptjs.hash(req.body.password, 10) // Hash password
+            password: await bcryptjs.hash(req.body.password, 10)
         });
 
         req.session.save(() => {
@@ -70,7 +73,12 @@ router.post('/register', async (req, res) => {
             res.status(200).json({ user: userData, message: 'Registration successful!' });
         });
     } catch (err) {
-        res.status(400).json({ message: 'Unable to register', error: err });
+        if (err.name === 'SequelizeUniqueConstraintError') {
+            res.status(400).json({ message: 'Username already in use. Please choose another.' });
+        } else {
+            console.error('Error during user registration:', err);
+            res.status(400).json({ message: 'Unable to register', error: err });
+        }
     }
 });
 
